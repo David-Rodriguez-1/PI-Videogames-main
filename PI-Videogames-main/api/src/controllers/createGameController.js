@@ -6,7 +6,8 @@ const CreateVideoGame = async (
   platforms,
   background_image,
   releaseDate,
-  rating
+  rating,
+  genres
 ) =>
   await Videogame.create({
     name,
@@ -15,6 +16,7 @@ const CreateVideoGame = async (
     background_image,
     releaseDate,
     rating,
+    genres
   });
 
 module.exports = CreateVideoGame;

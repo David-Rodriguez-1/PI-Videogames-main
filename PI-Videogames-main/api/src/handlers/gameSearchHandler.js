@@ -1,4 +1,4 @@
-const {findGameByName} = require('../controllers/findAllGames')
+const {findGameByName, findAllGame} = require('../controllers/findAllGamesController')
 
 const gameSearchHandler = async (req, res) => {
   const { name } = req.query;
