@@ -36,7 +36,6 @@ const findAllGame = async () => {
 
  // Obtengo el juego por name
 const findGameByName = async (name) => {
-  console.log(name);
   const dBGameByName = await Videogame.findAll({
     where: { name: { [Op.iLike]: `%${name}%` } },
     include: {

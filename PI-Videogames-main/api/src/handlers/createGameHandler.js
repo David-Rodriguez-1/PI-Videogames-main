@@ -3,12 +3,14 @@ const CreateVideoGame = require('../controllers/createGameController')
 const createGameHandler = async (req, res) => {
   try {
     const {
+      id,
       name,
       descriptions,
       plataform,
       background_image,
       releaseDate,
       rating,
+      genres,
     } = req.body;
     const newGame = await CreateVideoGame(
       name,
@@ -16,7 +18,8 @@ const createGameHandler = async (req, res) => {
       plataform,
       background_image,
       releaseDate,
-      rating
+      rating,
+      genres
     );
     res.status(201).json(newGame);
   } catch (error) {
