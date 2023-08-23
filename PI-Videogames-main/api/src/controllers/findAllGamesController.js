@@ -34,7 +34,8 @@ const findAllGame = async () => {
   return [...dBGames, ...apiClean];
 };
 
- // Obtengo el juego por name
+ //! Obtengo el juego por name
+ // Busco en DB
 const findGameByName = async (search) => {
   const dBGameByName = await Videogame.findAll({
     where: { name: { [Op.iLike]: `%${search}%` } },
@@ -49,29 +50,31 @@ const findGameByName = async (search) => {
     { limit: 15 }
   );
 
-  const apiGames = await axios.get(
-    `https://api.rawg.io/api/games?search=${search}&key=${API_KEY}`
-  );
-  console.log(apiGames);
-  const resApi = apiGames.data.results;
-  console.log(resApi);
+  // Busco en la API
+  if (search) {
 
-  // const resApiFiltered = resApi.filter(game => {
-    // console.log(name);
-    // if (name === game.name) {
-    //  return {
-    //    id: game.id,
-    //    name: game.name,
-    //    background_image: game.background_image,
-    //    platforms: game.platforms.map((p) => p.platform.name),
-    //    rating: game.rating,
-    //    genres: game.genres.map((g) => g.name)
-    //  };
-    // }
-  // })
-  // const gameByName = [...resApiFiltered, ...dBGameByName];
-  // if (gameByName.name !== name) throw Error(`The video game ${name} does not exist`);
-  return [...resApiFiltered, ...dBGameByName]
+    const apiGames = await axios.get(
+      `https://api.rawg.io/api/games?search=${search}&key=${API_KEY}`
+    );
+    const countApi = apiGames.data.count;
+
+    if (!countApi) throw Error(`Game '${search}' does not exist`);
+    
+    const gameSearchApi = apiGames.data.results.map(game => {
+      return {
+        id: game.id,
+        name: game.name,
+        descriptions: game.descriptions,
+        platforms: game.platforms.map(g => g.platform.name),
+        background_image: game.background_image,
+        rating: game.rating,
+        genres: game.genres.map(g => g.name)
+      };
+    })
+    const filterDb = dBGameByName.filter(g => g.name.toLowerCase().includes(search.toLowerCase()));
+    const results = [...filterDb, ...gameSearchApi];
+    return results.splice(0, 15);
+  }
 };
 
 module.exports = { findAllGame, findGameByName };
