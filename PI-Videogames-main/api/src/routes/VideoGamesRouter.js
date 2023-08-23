@@ -5,7 +5,8 @@ const gameSearchHandler = require("../handlers/gameSearchHandler");
 const createGameHandler = require('../handlers/createGameHandler')
 
 videoGamesRoutes.get("/:idVideogame", getVideogameByIdHandler);
-videoGamesRoutes.get("/", gameSearchHandler);
+// videoGamesRoutes.get("/", getAllGames);
+videoGamesRoutes.get("/search", gameSearchHandler);
 videoGamesRoutes.post("/", createGameHandler)
 
 module.exports = videoGamesRoutes;

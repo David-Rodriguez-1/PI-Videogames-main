@@ -35,9 +35,9 @@ const findAllGame = async () => {
 };
 
  // Obtengo el juego por name
-const findGameByName = async (name) => {
+const findGameByName = async (search) => {
   const dBGameByName = await Videogame.findAll({
-    where: { name: { [Op.iLike]: `%${name}%` } },
+    where: { name: { [Op.iLike]: `%${search}%` } },
     include: {
         model: Genre,
         atributes: ["name"],
@@ -50,22 +50,25 @@ const findGameByName = async (name) => {
   );
 
   const apiGames = await axios.get(
-    `https://api.rawg.io/api/games?key=${API_KEY}`
+    `https://api.rawg.io/api/games?search=${search}&key=${API_KEY}`
   );
+  console.log(apiGames);
   const resApi = apiGames.data.results;
-  const resApiFiltered = resApi.map(game => {
-    console.log(name);
-    if (name === game.name) {
-     return {
-       id: game.id,
-       name: game.name,
-       background_image: game.background_image,
-       platforms: game.platforms.map((p) => p.platform.name),
-       rating: game.rating,
-       genres: game.genres.map((g) => g.name)
-     };
-    }
-  })
+  console.log(resApi);
+
+  // const resApiFiltered = resApi.filter(game => {
+    // console.log(name);
+    // if (name === game.name) {
+    //  return {
+    //    id: game.id,
+    //    name: game.name,
+    //    background_image: game.background_image,
+    //    platforms: game.platforms.map((p) => p.platform.name),
+    //    rating: game.rating,
+    //    genres: game.genres.map((g) => g.name)
+    //  };
+    // }
+  // })
   // const gameByName = [...resApiFiltered, ...dBGameByName];
   // if (gameByName.name !== name) throw Error(`The video game ${name} does not exist`);
   return [...resApiFiltered, ...dBGameByName]

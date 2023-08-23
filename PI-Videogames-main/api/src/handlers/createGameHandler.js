@@ -3,7 +3,6 @@ const CreateVideoGame = require('../controllers/createGameController')
 const createGameHandler = async (req, res) => {
   try {
     const {
-      id,
       name,
       descriptions,
       plataform,
@@ -18,9 +17,9 @@ const createGameHandler = async (req, res) => {
       plataform,
       background_image,
       releaseDate,
-      rating,
-      genres
+      rating
     );
+    newGame.addGenre(genres)
     res.status(201).json(newGame);
   } catch (error) {
     res.status(400).json({ error: error.message });
