@@ -14,7 +14,8 @@ const findAllGame = async () => {
       },
     },
   });
-
+  
+  //!   ***Hacer Paginado***
   const apiGames = await axios.get(
     `https://api.rawg.io/api/games?key=${API_KEY}`
   );
@@ -34,7 +35,7 @@ const findAllGame = async () => {
   return [...dBGames, ...apiClean];
 };
 
- //! Obtengo el juego por name
+ //? Obtengo el juego por name
  // Busco en DB
 const findGameByName = async (search) => {
   const dBGameByName = await Videogame.findAll({
