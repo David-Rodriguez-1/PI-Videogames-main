@@ -8,7 +8,11 @@
 
 .btnInsert{
     position: absolute;
+    padding: 13px;
+    cursor: pointer;
+    box-shadow: 0 0 5px #fff;
     top: 50vh;
+    right: 50vw;
     border: none;
     border-radius: 5px;
     background: transparent;
