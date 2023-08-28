@@ -1,17 +1,17 @@
-import './App.css';
-import { Routes, Route } from 'react-router-dom';
-import { Landing, Home, CreateGame, DetailGame } from './views';
-// import { Route } from 'react-router-dom';
-
-const URL = "http://localhost:3001/videogames";
+import "./App.css";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { Landing, Home, SearchBar, DetailGame} from "./views";
 
 function App() {
+  const location = useLocation();
 
   return (
     <div className="App">
+      {location.pathname !== "/" && <SearchBar />}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/detail" element={<DetailGame />} />
       </Routes>
     </div>
   );

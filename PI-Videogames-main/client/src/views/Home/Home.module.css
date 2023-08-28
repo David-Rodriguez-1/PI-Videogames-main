@@ -1,0 +1,12 @@
+.flex{
+    display: flex;
+}
+
+.aside{
+    width: 14rem;
+    border-right: 1px solid #000;
+}
+
+.cardMain{
+    width: 100%
+}
