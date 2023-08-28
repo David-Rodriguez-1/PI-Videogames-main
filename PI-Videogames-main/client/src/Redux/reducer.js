@@ -1,7 +1,7 @@
 import { GET_VIDEOGAMES } from "./actions";
 
 const initialState = {
-  games: [],
+  games: []
 };
 
 const rootReducer = (state = initialState, action) => {

@@ -1,5 +1,5 @@
-import Card from "../Card/Card";
 import style from "./CardsContainer.module.css";
+import Card from "../Card/Card";
 import { useSelector } from "react-redux";
 
 const CardsContainer = () => {
@@ -7,17 +7,9 @@ const CardsContainer = () => {
 
   return (
     <div className={style.cardContainer}>
-      {games.map((game) => {
-        return (
-          <Card
-            id={game.id}
-            name={game.name}
-            platform={game.platform}
-            background_image={game.background_image}
-            rating={game.rating}
-          />
-        );
-      })}
+      {games.map((game) => (
+        <Card key={game.id} games={game} />
+      ))}
     </div>
   );
 };
