@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/detail" element={<DetailGame />} />
+        <Route exact path="/detail/:idVideogame" element={<DetailGame />} />
       </Routes>
     </div>
   );

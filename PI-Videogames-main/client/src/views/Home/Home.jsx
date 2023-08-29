@@ -2,7 +2,7 @@ import CardsContainer from "../../components/CardsContainer/CardsContainer";
 import { useEffect } from "react";
 import style from './Home.module.css'
 import { useDispatch } from "react-redux";
-import getVideoGames from '../../Redux/actions'
+import {getVideoGames} from '../../Redux/actions'
 import SideBar from "../../components/SideBar/SideBar";
 
 const Home = () => {

@@ -9,7 +9,7 @@ const CardsContainer = () => {
   return (
     <article className={style.cardContainer}>
       {games.map((game) => (
-        <Link to={"/detail"} key={game.id}>
+        <Link className={style.link} to={`/detail/${game.id}`} key={game.id}>
           <Card game={game} />
         </Link>
       ))}
