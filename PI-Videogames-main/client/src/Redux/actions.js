@@ -10,10 +10,10 @@ const getVideoGames = () => {
   };
 };
 
-const getDetailVideoGame = (id) => {
+const getDetailVideoGame = (idVideogame) => {
   return async function (dispatch) {
-    const { data } = await axios.get(`${URL}/${id}`);
-    dispatch({ type: GET_DETAILVIDEOGAME, payload: data });
+    const { data } = await axios.get(`${URL}/${idVideogame}`);
+    dispatch({ type: GET_DETAILVIDEOGAME, payload: data[0] });
   };
 };
 

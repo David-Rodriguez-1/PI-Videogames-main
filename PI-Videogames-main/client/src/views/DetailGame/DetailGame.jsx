@@ -8,15 +8,12 @@ const DetailGame = () => {
   const dispatch = useDispatch();
   
   const {idVideogame} = useParams();
-  console.log(idVideogame);
 
   
   useEffect(() => {
-    console.log("hola");
     dispatch(getDetailVideoGame(idVideogame));
-  }, [dispatch]);
-  const [detailVideoGame] = useSelector((state) => state.gameDetails);
-  console.log(detailVideoGame);
+  }, [dispatch, idVideogame]);
+  const detailVideoGame = useSelector((state) => state.gameDetails);
   
   return (
     <div className={style.detailContainer}>
