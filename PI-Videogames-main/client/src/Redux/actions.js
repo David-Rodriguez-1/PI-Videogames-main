@@ -17,4 +17,11 @@ const getDetailVideoGame = (idVideogame) => {
   };
 };
 
-export { getVideoGames, getDetailVideoGame };
+const postVideoGame = (payload) => {
+  return async function () {
+    const result = await axios.post("http://localhost:3001/videogames", payload);
+    return result;
+  };
+}
+
+export { getVideoGames, getDetailVideoGame, postVideoGame };
