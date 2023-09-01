@@ -2,7 +2,7 @@ const { Videogame } = require("../db");
 
 const CreateVideoGame = async (
   name,
-  descriptions,
+  description,
   platforms,
   background_image,
   releaseDate,
@@ -11,7 +11,7 @@ const CreateVideoGame = async (
 ) =>
   await Videogame.create({
     name,
-    descriptions,
+    description ,
     platforms,
     background_image,
     releaseDate,

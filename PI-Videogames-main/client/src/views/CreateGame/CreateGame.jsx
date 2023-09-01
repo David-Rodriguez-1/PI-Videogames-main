@@ -1,43 +1,44 @@
 import { useState } from "react";
-import { postVideoGame } from "../../Redux/actions";
-import { useDispatch } from 'react-redux';
+import axios from "axios";
 
 const CreateGame = () => {
-  const dispatch = useDispatch()
 
   const [errors, setErrors] = useState({ form: "Must complete the form" });
 
   const [form, setForm] = useState({
     name: "",
     description: "",
+    platforms: [],
+    image: "",
     releaseDate: "",
     rating: 0,
-    image: '',
     genres: [],
-    platforms: [],
   });
   const handlerInput = (event) => {
     const property = event.target.name;
     const value = event.target.value;
     setForm({ ...form, [property]: value });
+    setErrors(validateInput({ ...errors, [property]: value }));
   };
 
   const handlerCheckGenres = (event) => {
     const value = event.target.value;
     const check = event.target.checked;
-    
+    const valueN = parseInt(value)
+
     if (check) {
       setForm((prevState) => ({
         ...prevState,
-        genres: form.genres.concat(value),
+        genres: form.genres.concat(valueN),
       }));
     } else {
       setForm((prevState) => ({
         ...prevState,
-        genres: form.genres.filter((x) => value !== x),
+        genres: form.genres.filter((x) => valueN !== x),
       }));
-      }
     }
+    setErrors(validateCheckBox({ ...form, [check]: valueN }));
+  };
 
   const handlerCheckPlataforms = (event) => {
     const value = event.target.value;
@@ -53,17 +54,18 @@ const CreateGame = () => {
         platforms: form.platforms.filter((x) => value !== x),
       }));
     }
+    setErrors(validateCheckBox({ ...form, [check]: value }));
   };
 
   const validateInput = (form) => {
     let errors = {};
     if (!form.name) {
-      errors.name = 'Name is required'
+      errors.name = "Name is required";
     } else if (form.name.length < 3) {
       errors.name = "Game Name must have at least 3 characters";
     }
     if (!form.description) {
-      errors.description = 'Description is required';
+      errors.description = "Description is required";
     } else if (form.description.length < 15) {
       errors.description = "Description must have at least 15 characters";
     }
@@ -73,27 +75,26 @@ const CreateGame = () => {
       errors.rating = "Rating must be between 1 and 5";
     }
     return errors;
-  }
+  };
 
   const validateCheckBox = (form) => {
     let errorsCkecks = [];
     if (form.genres.length < 1) errorsCkecks.push("Genres is required");
     if (form.platforms.length < 1) errorsCkecks.push("Platforms is required");
-  }
+    return errorsCkecks;
+  };
 
   const handlerSubmit = (event) => {
     event.preventDefault();
-    validateInput(form);
-    validateCheckBox(form)
-    dispatch(postVideoGame())
+    // validateInput(form);
+    // validateCheckBox(form);
+    axios
+      .post("http://localhost:3001/videogames", form)
+      .then((res) => alert(res))
+      .catch((err) => alert(err));
     alert(`${form.name} created successfully`);
-  }
-  
-
-  // const validate = (form) => {
-    
-  // }
-
+  };
+  console.log(form);
   return (
     <main>
       <h1>CREATING VIDEOGAME</h1>
@@ -107,7 +108,7 @@ const CreateGame = () => {
           onChange={handlerInput}
         />
 
-        <label htmlFor="description">Descriptios:</label>
+        <label htmlFor="description">Descriptions:</label>
         <input
           type="text"
           id="description"
@@ -116,7 +117,7 @@ const CreateGame = () => {
           onChange={handlerInput}
         />
 
-        <label htmlFor="description">Image:</label>
+        <label htmlFor="image">Image:</label>
         <input
           type="text"
           id="image"
@@ -125,7 +126,7 @@ const CreateGame = () => {
           onChange={handlerInput}
         />
 
-        <label htmlFor="">Release Date: </label>
+        <label htmlFor="releasedDate">Release Date: </label>
         <input
           type="date"
           id="releaseDate"
@@ -133,6 +134,16 @@ const CreateGame = () => {
           value={form.releaseDate}
           onChange={handlerInput}
         />
+
+        <label htmlFor="rating">Rating:</label>
+        <input
+          type="number"
+          id="rating"
+          name="rating"
+          value={form.rating}
+          onChange={handlerInput}
+        />
+
         <label className="title-name">
           <strong>Genres: </strong>
         </label>
@@ -141,7 +152,7 @@ const CreateGame = () => {
             <label htmlFor="Action">Action.</label>
             <input
               name="Action"
-              value="Action"
+              value="4"
               type="checkbox"
               id="Action"
               onChange={handlerCheckGenres}
@@ -151,7 +162,7 @@ const CreateGame = () => {
             <label htmlFor="Indie">Indie.</label>
             <input
               name="Indie"
-              value="Indie"
+              value="51"
               type="checkbox"
               id="Indie"
               onChange={handlerCheckGenres}
@@ -161,7 +172,7 @@ const CreateGame = () => {
             <label htmlFor="Adventure">Adventure.</label>
             <input
               name="Adventure"
-              value="Adventure"
+              value="3"
               type="checkbox"
               id="Adventure"
               onChange={handlerCheckGenres}
@@ -171,7 +182,7 @@ const CreateGame = () => {
             <label htmlFor="RPG">RPG.</label>
             <input
               name="RPG"
-              value="RPG"
+              value="5"
               type="checkbox"
               id="RPG"
               onChange={handlerCheckGenres}

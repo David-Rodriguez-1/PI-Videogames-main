@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      descriptions: {
+      description: {
         type: DataTypes.STRING,
       },
       platforms: {
@@ -25,13 +25,17 @@ module.exports = (sequelize) => {
       background_image: {
         type: DataTypes.STRING,
       },
+      releaseDate: {
+        type: DataTypes.DATEONLY,
+        allowNull: false
+      },
       rating: {
         type: DataTypes.DECIMAL,
       },
     },
     {
       timestamps: false,
-      createAt: "creado",
+      createAt: "created",
       updatedAt: false,
     }
   );
