@@ -1,10 +1,6 @@
 const CreateVideoGame = require('../controllers/createGameController')
 
 const createGameHandler = async (req, res) => {
-  console.log(req.body);
-  console.log('hola');
-  // console.log(JSON.stringify(req.body));
-  // console.log(typeof req.body);
   try {
     const {
       name,
@@ -23,7 +19,6 @@ const createGameHandler = async (req, res) => {
       releaseDate,
       parseInt(rating)
     );
-    console.log(newGame);
     newGame.addGenre(genres)
     res.status(201).json(newGame);
   } catch (error) {
