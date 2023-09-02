@@ -24,15 +24,24 @@ const findOneGameDB = async (idVideogame) => {
     genres,
   } = dBGame;
   genres = genres.map((gen) => gen.name);
-  return{
-  id, name, description, platforms, background_image, released, rating, genres};
+
+  const gameDetailDB = {
+    id,
+    name,
+    description,
+    platforms,
+    background_image,
+    released,
+    rating,
+    genres,
+  };
+  return [gameDetailDB]
 };
 
 const findOneGameAPI = async (idVideogame) => {
   const resp = await axios.get(
     `https://api.rawg.io/api/games/${idVideogame}?key=${API_KEY}`
   );
-  
   const respApi = [resp.data].map((game) => {
     return {
       id: game.id,

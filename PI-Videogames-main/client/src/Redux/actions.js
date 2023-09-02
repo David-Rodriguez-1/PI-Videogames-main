@@ -11,17 +11,12 @@ const getVideoGames = () => {
 };
 
 const getDetailVideoGame = (idVideogame) => {
+  console.log(idVideogame);
   return async function (dispatch) {
     const { data } = await axios.get(`${URL}/${idVideogame}`);
+    console.log(data);
     dispatch({ type: GET_DETAILVIDEOGAME, payload: data[0] });
   };
 };
-
-// const postVideoGame = (payload) => {
-//   return async function () {
-//     const result = await axios.post("http://localhost:3001/videogames", payload);
-//     return result;
-//   };
-// }
-
+  
 export { getVideoGames, getDetailVideoGame };

@@ -4,12 +4,12 @@ const initialState = {
   games: [],
   gameDetails: []
 };
-
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_VIDEOGAMES:
       return { ...state, games: action.payload };
     case GET_DETAILVIDEOGAME:
+      console.log(action.payload);
       return { ...state, gameDetails: action.payload };
 
     default:

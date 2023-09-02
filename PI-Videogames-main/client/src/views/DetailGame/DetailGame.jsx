@@ -7,13 +7,15 @@ import { useDispatch, useSelector } from "react-redux";
 const DetailGame = () => {
   const dispatch = useDispatch();
   
-  const {idVideogame} = useParams();
+  const { idVideogame } = useParams();
+  console.log(idVideogame);
 
+  const detailVideoGame = useSelector((state) => state.gameDetails);
+  console.log(detailVideoGame);
   
   useEffect(() => {
     dispatch(getDetailVideoGame(idVideogame));
   }, [dispatch, idVideogame]);
-  const detailVideoGame = useSelector((state) => state.gameDetails);
   
   return (
     <div className={style.detailContainer}>

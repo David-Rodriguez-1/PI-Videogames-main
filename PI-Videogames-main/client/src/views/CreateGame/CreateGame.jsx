@@ -9,7 +9,7 @@ const CreateGame = () => {
     name: "",
     description: "",
     platforms: [],
-    image: "",
+    background_image: "",
     releaseDate: "",
     rating: 0,
     genres: [],
@@ -86,13 +86,12 @@ const CreateGame = () => {
 
   const handlerSubmit = (event) => {
     event.preventDefault();
-    // validateInput(form);
-    // validateCheckBox(form);
+    validateInput(form);
+    validateCheckBox(form);
     axios
       .post("http://localhost:3001/videogames", form)
       .then((res) => alert(res))
       .catch((err) => alert(err));
-    alert(`${form.name} created successfully`);
   };
   console.log(form);
   return (
@@ -117,12 +116,12 @@ const CreateGame = () => {
           onChange={handlerInput}
         />
 
-        <label htmlFor="image">Image:</label>
+        <label htmlFor="background_image">Image:</label>
         <input
           type="text"
-          id="image"
-          name="image"
-          value={form.image}
+          id="background_image"
+          name="background_image"
+          value={form.background_image}
           onChange={handlerInput}
         />
 
