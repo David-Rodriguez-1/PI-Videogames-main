@@ -1,5 +1,9 @@
 import axios from "axios";
-import { GET_VIDEOGAMES, GET_DETAILVIDEOGAME } from "./constants";
+import {
+  GET_VIDEOGAMES,
+  GET_DETAILVIDEOGAME,
+  GET_VIDEOGAMESBYNAME,
+} from "./action_types";
 
 const URL = "http://localhost:3001/videogames";
 
@@ -11,12 +15,17 @@ const getVideoGames = () => {
 };
 
 const getDetailVideoGame = (idVideogame) => {
-  console.log(idVideogame);
   return async function (dispatch) {
     const { data } = await axios.get(`${URL}/${idVideogame}`);
-    console.log(data);
     dispatch({ type: GET_DETAILVIDEOGAME, payload: data[0] });
   };
 };
+
+const getVideoGameByName = (search) => {
+  return async function (dispatch) {
+    const { data } = await axios.get(`${URL}?search=${search}`);
+    dispatch({ type: GET_VIDEOGAMESBYNAME, payload: data });
+  };
+};
   
-export { getVideoGames, getDetailVideoGame };
+export { getVideoGames, getDetailVideoGame, getVideoGameByName };

@@ -93,7 +93,6 @@ const CreateGame = () => {
       .then((res) => alert(res))
       .catch((err) => alert(err));
   };
-  console.log(form);
   return (
     <main>
       <h1>CREATING VIDEOGAME</h1>
