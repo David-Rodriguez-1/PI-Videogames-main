@@ -167,7 +167,7 @@ const CreateGame = () => {
             />
           </div>
           <div className="Adventure">
-            <label htmlFor="Adventure">Adventure.</label>
+            <label htmlFor="Adventure">Adventure</label>
             <input
               name="Adventure"
               value="3"
@@ -177,7 +177,7 @@ const CreateGame = () => {
             />
           </div>
           <div>
-            <label htmlFor="RPG">RPG.</label>
+            <label htmlFor="RPG">RPG</label>
             <input
               name="RPG"
               value="5"
@@ -187,114 +187,144 @@ const CreateGame = () => {
             />
           </div>
           <div>
-            <label htmlFor="Strategy">Strategy.</label>
+            <label htmlFor="Strategy">Strategy</label>
             <input
               name="Strategy"
-              value="Strategy"
+              value="10"
               type="checkbox"
               id="Strategy"
               onChange={handlerCheckGenres}
             />
           </div>
           <div>
-            <label htmlFor="Shooter">Shooter.</label>
+            <label htmlFor="Shooter">Shooter</label>
             <input
               name="Shooter"
-              value="Shooter"
+              value="2"
               type="checkbox"
               id="Shooter"
               onChange={handlerCheckGenres}
             />
           </div>
           <div>
-            <label htmlFor="Casual">Casual.</label>
+            <label htmlFor="Casual">Casual</label>
             <input
               name="Casual"
-              value="Casual"
+              value="40"
               type="checkbox"
               id="Casual"
               onChange={handlerCheckGenres}
             />
           </div>
           <div>
-            <label htmlFor="Simulation">Simulation.</label>
+            <label htmlFor="Simulation">Simulation</label>
             <input
               name="Simulation"
-              value="Simulation"
+              value="14"
               type="checkbox"
               id="Simulation"
               onChange={handlerCheckGenres}
             />
           </div>
           <div>
-            <label htmlFor="Puzzle">Puzzle.</label>
+            <label htmlFor="Puzzle">Puzzle</label>
             <input
               name="Puzzle"
-              value="Puzzle"
+              value="7"
               type="checkbox"
               id="Puzzle"
               onChange={handlerCheckGenres}
             />
           </div>
           <div>
-            <label htmlFor="Arcade">Arcade.</label>
+            <label htmlFor="Arcade">Arcade</label>
             <input
               name="Arcade"
-              value="Arcade"
+              value="11"
               type="checkbox"
               id="Arcade"
               onChange={handlerCheckGenres}
             />
           </div>
           <div>
-            <label htmlFor="Platformer">Platformer.</label>
+            <label htmlFor="Platformer">Platformer</label>
             <input
               name="Platformer"
-              value="Platformer"
+              value="83"
               type="checkbox"
               id="Platformer"
               onChange={handlerCheckGenres}
             />
           </div>
           <div>
-            <label htmlFor="Racing">Racing.</label>
+            <label htmlFor="Racing">Racing</label>
             <input
               name="Racing"
-              value="Racing"
+              value="1"
               type="checkbox"
               id="Racing"
               onChange={handlerCheckGenres}
             />
           </div>
           <div>
-            <label htmlFor="Massively-Multiplayer">
-              <input
-                name="Massively-Multiplayer"
-                value="Massively-Multiplayer"
-                type="checkbox"
-                id="Massively-Multiplayer"
-                onChange={handlerCheckGenres}
-              />
-              Massively-Multiplayer.
-            </label>
+            <label htmlFor="Massively-Multiplayer">Massively-Multiplayer</label>
+            <input
+              name="Massively-Multiplayer"
+              value="59"
+              type="checkbox"
+              id="Massively-Multiplayer"
+              onChange={handlerCheckGenres}
+            />
           </div>
           <div>
-            <label htmlFor="Sports">Sports.</label>
+            <label htmlFor="Sports">Sports</label>
             <input
               name="Sports"
-              value="Sports"
+              value="15"
               type="checkbox"
               id="Sports"
               onChange={handlerCheckGenres}
             />
           </div>
           <div>
-            <label htmlFor="Fighting">Fighting.</label>
+            <label htmlFor="Fighting">Fighting</label>
             <input
               name="Fighting"
-              value="Fighting"
+              value="6"
               type="checkbox"
               id="Fighting"
+              onChange={handlerCheckGenres}
+            />
+            <label htmlFor="Family">Family</label>
+            <input
+              name="Family"
+              value="19"
+              type="checkbox"
+              id="Family"
+              onChange={handlerCheckGenres}
+            />
+            <label htmlFor="Board Games">Board Games</label>
+            <input
+              name="Board Games"
+              value="28"
+              type="checkbox"
+              id="Board Games"
+              onChange={handlerCheckGenres}
+            />
+            <label htmlFor="Educational">Educational</label>
+            <input
+              name="Educational"
+              value="34"
+              type="checkbox"
+              id="Educational"
+              onChange={handlerCheckGenres}
+            />
+            <label htmlFor="Card">Card</label>
+            <input
+              name="Card"
+              value="17"
+              type="checkbox"
+              id="Card"
               onChange={handlerCheckGenres}
             />
           </div>
@@ -305,7 +335,7 @@ const CreateGame = () => {
         </label>
         <div id="platforms" className="plat-div">
           <div>
-            <label htmlFor="PC">PC.</label>
+            <label htmlFor="PC">PC</label>
             <input
               name="PC"
               value="PC"
@@ -315,7 +345,7 @@ const CreateGame = () => {
             />
           </div>
           <div>
-            <label htmlFor="iOS">iOS.</label>
+            <label htmlFor="iOS">iOS</label>
             <input
               name="iOS"
               value="iOS"
@@ -325,7 +355,7 @@ const CreateGame = () => {
             />
           </div>
           <div>
-            <label htmlFor="Android">Android.</label>
+            <label htmlFor="Android">Android</label>
             <input
               name="Android"
               value="Android"
@@ -335,7 +365,7 @@ const CreateGame = () => {
             />
           </div>
           <div>
-            <label htmlFor="macOS">macOS.</label>
+            <label htmlFor="macOS">macOS</label>
             <input
               name="macOS"
               value="macOS"
@@ -345,7 +375,7 @@ const CreateGame = () => {
             />
           </div>
           <div>
-            <label htmlFor="PlayStation 4">PlayStation 4.</label>
+            <label htmlFor="PlayStation 4">PlayStation 4</label>
             <input
               name="PlayStation 4"
               value="PlayStation 4"
@@ -355,7 +385,7 @@ const CreateGame = () => {
             />
           </div>
           <div>
-            <label htmlFor="PlayStation 5">PlayStation 5.</label>
+            <label htmlFor="PlayStation 5">PlayStation 5</label>
             <input
               name="PlayStation 5"
               value="PlayStation 5"
@@ -365,7 +395,7 @@ const CreateGame = () => {
             />
           </div>
           <div>
-            <label htmlFor="XBOX">XBOX.</label>
+            <label htmlFor="XBOX">XBOX</label>
             <input
               name="XBOX"
               value="XBOX"
@@ -375,7 +405,7 @@ const CreateGame = () => {
             />
           </div>
           <div>
-            <label htmlFor="PS Vita">PS Vita.</label>
+            <label htmlFor="PS Vita">PS Vita</label>
             <input
               name="PS Vita"
               value="PS Vita"

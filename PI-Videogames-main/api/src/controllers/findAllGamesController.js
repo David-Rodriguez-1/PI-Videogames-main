@@ -16,12 +16,19 @@ const findAllGame = async () => {
   });
 
   //!   ***Hacer Paginado***
+  const page1 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`).then((res) => res.data);
+  const page2 = await axios.get(`https://api.rawg.io/api/games?page=2&key=${API_KEY}`).then((res) => res.data);
+  const page3 = await axios.get(`https://api.rawg.io/api/games?page=3&key=${API_KEY}`).then((res) => res.data);
+
+  const resultado = Promise.all([page1, page2, page3]).then((res) => console.log(res))
+  console.log(resultado);
+
   const apiGames = await axios.get(
     `https://api.rawg.io/api/games?key=${API_KEY}`
   );
   const resApi = apiGames.data.results;
 
-  const apiClean = resApi.map((game) => {
+  const apiClean = resultado.map((game) => {
     return {
       id: game.id,
       name: game.name,
