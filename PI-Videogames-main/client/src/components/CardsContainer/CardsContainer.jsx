@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const CardsContainer = () => {
-  const games = useSelector((state) => state.games);
+  const games = useSelector((state) => state.allVideoGames);
 
   return (
     <article className={style.cardContainer}>

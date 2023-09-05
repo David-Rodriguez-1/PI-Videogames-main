@@ -3,6 +3,9 @@ import {
   GET_VIDEOGAMES,
   GET_DETAILVIDEOGAME,
   GET_VIDEOGAMESBYNAME,
+  ORDER_BY_RATING,
+  ORDER_BY_NAME,
+  FILTER_BY_GENRES,
 } from "./action_types";
 
 const URL = "http://localhost:3001/videogames";
@@ -27,5 +30,30 @@ const getVideoGameByName = (search) => {
     dispatch({ type: GET_VIDEOGAMESBYNAME, payload: data });
   };
 };
+
+const orderCardsByRating = (order) => {
+  return function (dispatch) {
+    dispatch({ type: ORDER_BY_RATING, payload: order });
+  }
+}
+
+const orderCardsByName = (order) => {
+  return function (dispatch) {
+    dispatch({ type: ORDER_BY_NAME, payload: order });
+  };
+};
+
+const filterByGenres = (filter) => {
+  return function (dispatch) {
+    dispatch({ type: FILTER_BY_GENRES, payload: filter });
+  }
+}
   
-export { getVideoGames, getDetailVideoGame, getVideoGameByName };
+export {
+  getVideoGames,
+  getDetailVideoGame,
+  getVideoGameByName,
+  orderCardsByRating,
+  orderCardsByName,
+  filterByGenres,
+};
