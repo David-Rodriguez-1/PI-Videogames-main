@@ -5,12 +5,16 @@ import {
   ORDER_BY_RATING,
   ORDER_BY_NAME,
   FILTER_BY_GENRES,
+  GET_GENRES,
+  FILTER_BY_ORIGIN,
+  RESET_FILTER,
 } from "./action_types";
 
 const initialState = {
   games: [],
   allVideoGames: [],
   gameDetails: [],
+  genres: [], 
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -20,6 +24,12 @@ const rootReducer = (state = initialState, action) => {
         allVideoGames: action.payload,
         games: action.payload,
       };
+    
+    case GET_GENRES:
+      return {
+        ...state,
+        genres: action.payload
+      }
 
     case GET_DETAILVIDEOGAME:
       return { ...state, gameDetails: action.payload };
@@ -56,8 +66,6 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case FILTER_BY_GENRES:
-      console.log(action.payload);
-      console.log(state.allVideoGames);
       return {
         ...state,
         allVideoGames: [
@@ -66,6 +74,8 @@ const rootReducer = (state = initialState, action) => {
           ),
         ],
       };
+    case RESET_FILTER:
+      return{...state.allVideoGames}
 
     default:
       return { ...state };

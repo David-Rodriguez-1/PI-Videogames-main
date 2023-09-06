@@ -1,93 +1,77 @@
 import style from "./SideBar.module.css";
-import { useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import {
   orderCardsByRating,
   orderCardsByName,
   filterByGenres,
+  getGenres,
+  filterByOrigin,
+  resetFilter,
 } from "../../Redux/actions";
-import axios from "axios";
 
 const SideBar = () => {
   const dispatch = useDispatch();
-  // const [games] = useSelector((state) => state.allVideoGames);
-  // console.log(games);
-  const [genres, setGenres] = useState([])
-  console.log(genres);
+  const genres = useSelector((state) => state.genres);
 
-  const genreHandler = (event) => {
-    const genre = event.target.value;
-    // const check = event.target.checked;
-    console.log(genre);
-    // if (check) {
-    //   setGenres((prevState) => ({
-    //     ...prevState,
-    //     genres: genres.filter((x) => genre !== x)
-    //   }))
-    // }
-    // if (genre !== "allGames") {
-    //   dispatch(resetFilter());
-    // } else {
-      dispatch(filterByGenres(genre));
-    // }
-  };
   useEffect(() => {
-    async function fnApi() {
-      const { data } = await axios.get("http://localhost:3001/genres");
-      setGenres(data)
+    dispatch(getGenres());
+  }, []);
 
-    }
-    fnApi()
-  }, [genres]);
+  const handlesGenres = (event) => {
+    const value = event.target.value;
+    dispatch(resetFilter(value));
+    dispatch(filterByGenres(value));
+  };
 
+  const handlerRating = (event) => {
+    const value = event.target.value;
+    return value === "resetFilter"
+      ? dispatch(resetFilter())
+      : dispatch(orderCardsByRating(value));
+  };
+  const handlerName = (event) => {
+    const value = event.target.value;
+    dispatch(orderCardsByName(value));
+  };
 
+  const handlerOrigin = (event) => {
+    const value = event.target.value;
+    dispatch(filterByOrigin(value));
+  };
 
   return (
     <aside className={style.sideContainer}>
       <h1>Filters</h1>
-      <select onChange={(e) => dispatch(orderCardsByRating(e.target.value))}>
-        {["Order by Rating", "Ascendant", "Descendant"].map((e, i) => (
-          <option value={e} key={i}>
-            {e}
-          </option>
-        ))}
-      </select>
-      <select onChange={(e) => dispatch(orderCardsByName(e.target.value))}>
-        {["Order by Name", "Ascendant", "Descendant"].map((e, i) => (
-          <option value={e} key={i}>
-            {e}
-          </option>
-        ))}
+      <select onChange={handlerRating}>
+        <option value="resetFilter">Order by Rating</option>
+        <option value="Ascendant">Ascendant</option>
+        <option value="Descendant">Descendant</option>
       </select>
       <br />
-      {/* <select onChange={genreHandler}>
-        <option value="allGames">Filter By Genre</option>
+      <select onChange={handlerName}>
+        <option value="resetFilter">Order by Name</option>
+        <option value="Descendant">A-Z</option>
+        <option value="Ascendant">Z-A</option>
+      </select>
+      <br />
+      <select onChange={handlesGenres}>
+        <option value="resetFilter">Filter By Genre</option>
         {genres.map((genre) => (
           <option key={genre.id} value={genre.name}>
             {genre.name}
           </option>
         ))}
-      </select> */}
-      {/* <select className={style.filterGenres} onChange={(e) => dispatch(filterByGenres(e.target.value))}>
-        {genres.map((e, i) => (
-          <option value={e.genres} key={i}>
-            {e.name}
+      </select>
+      <br />
+      <select onChange={handlerOrigin}>
+        <option value="resetFilter">Filter By Origin</option>
+        {genres.map((genre) => (
+          <option key={genre.id} value={genre.name}>
+            {genre.name}
           </option>
         ))}
-      </select> */}
-      {genres.map((e, i) => (
-        <label htmlFor={e.name} key={i} onChange={genreHandler} >
-          {e.name}
-          <input
-            key={i}
-            type="checkbox"
-            value={e.name}
-            name={e.name}
-            id={e.name}
-          />
-          <br />
-        </label>
-      ))}
+      </select>
     </aside>
   );
 };

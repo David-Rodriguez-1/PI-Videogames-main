@@ -6,27 +6,38 @@ import {
   ORDER_BY_RATING,
   ORDER_BY_NAME,
   FILTER_BY_GENRES,
+  GET_GENRES,
+  FILTER_BY_ORIGIN,
+  RESET_FILTER,
 } from "./action_types";
 
-const URL = "http://localhost:3001/videogames";
+const URL_GAMES = "http://localhost:3001/videogames";
+const URL_GENRES = "http://localhost:3001/genres";
 
 const getVideoGames = () => {
   return async function (dispatch) {
-    const { data } = await axios.get(URL);
+    const { data } = await axios.get(URL_GAMES);
     dispatch({ type: GET_VIDEOGAMES, payload: data });
+  };
+};
+
+const getGenres = () => {
+  return async function (dispatch) {
+    const { data } = await axios.get(URL_GENRES);
+    dispatch({ type: GET_GENRES, payload: data });
   };
 };
 
 const getDetailVideoGame = (idVideogame) => {
   return async function (dispatch) {
-    const { data } = await axios.get(`${URL}/${idVideogame}`);
+    const { data } = await axios.get(`${URL_GAMES}/${idVideogame}`);
     dispatch({ type: GET_DETAILVIDEOGAME, payload: data[0] });
   };
 };
 
 const getVideoGameByName = (search) => {
   return async function (dispatch) {
-    const { data } = await axios.get(`${URL}?search=${search}`);
+    const { data } = await axios.get(`${URL_GAMES}?search=${search}`);
     dispatch({ type: GET_VIDEOGAMESBYNAME, payload: data });
   };
 };
@@ -48,7 +59,20 @@ const filterByGenres = (filter) => {
     dispatch({ type: FILTER_BY_GENRES, payload: filter });
   }
 }
-  
+ 
+const filterByOrigin = (filter) => {
+  return function (dispatch) {
+    dispatch({ type: FILTER_BY_ORIGIN, payload: filter });
+  };
+};
+
+const resetFilter = () => {
+  return function (dispatch) {
+    dispatch({ type: RESET_FILTER });
+  }
+}
+
+
 export {
   getVideoGames,
   getDetailVideoGame,
@@ -56,4 +80,7 @@ export {
   orderCardsByRating,
   orderCardsByName,
   filterByGenres,
+  getGenres,
+  filterByOrigin,
+  resetFilter,
 };
