@@ -43,6 +43,7 @@ const getVideoGameByName = (search) => {
 };
 
 const orderCardsByRating = (order) => {
+  console.log(order);
   return function (dispatch) {
     dispatch({ type: ORDER_BY_RATING, payload: order });
   }
@@ -61,15 +62,14 @@ const filterByGenres = (filter) => {
 }
  
 const filterByOrigin = (filter) => {
+  console.log(filter);
   return function (dispatch) {
     dispatch({ type: FILTER_BY_ORIGIN, payload: filter });
   };
 };
 
 const resetFilter = () => {
-  return function (dispatch) {
-    dispatch({ type: RESET_FILTER });
-  }
+    return { type: RESET_FILTER };
 }
 
 

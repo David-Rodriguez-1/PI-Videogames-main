@@ -11,8 +11,8 @@ import {
 } from "./action_types";
 
 const initialState = {
-  games: [],
   allVideoGames: [],
+  games: [],
   gameDetails: [],
   genres: [], 
 };
@@ -21,15 +21,15 @@ const rootReducer = (state = initialState, action) => {
     case GET_VIDEOGAMES:
       return {
         ...state,
-        allVideoGames: action.payload,
-        games: action.payload,
+        allVideoGames: [...action.payload],
+        games: [...action.payload],
       };
-    
+
     case GET_GENRES:
       return {
         ...state,
-        genres: action.payload
-      }
+        genres: action.payload,
+      };
 
     case GET_DETAILVIDEOGAME:
       return { ...state, gameDetails: action.payload };
@@ -42,6 +42,9 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allVideoGames: gamesByRating.sort((a, b) => {
+          // return action.payload === "Ascendant"
+          //   ? b.rating - a.rating
+          //   : a.rating - b.rating;
           if (action.payload === "Ascendant") {
             return b.rating - a.rating;
           } else if (action.payload === "Descendant") {
@@ -69,13 +72,22 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allVideoGames: [
-          ...state.games.filter((game) =>
-            game.genres.includes(action.payload)
+          ...state.games.filter((game) => game.genres.includes(action.payload)),
+        ],
+      };
+
+    case FILTER_BY_ORIGIN:
+      return {
+        ...state,
+        allVideoGames: [
+          ...state.games.filter(
+            (game) => game.origin === action.payload
           ),
         ],
       };
+    
     case RESET_FILTER:
-      return{...state.allVideoGames}
+      return { ...state, allVideoGames: [...state.games] };
 
     default:
       return { ...state };

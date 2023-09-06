@@ -20,24 +20,38 @@ const SideBar = () => {
 
   const handlesGenres = (event) => {
     const value = event.target.value;
-    dispatch(resetFilter(value));
-    dispatch(filterByGenres(value));
+    if (value === "resetFilter") {
+      dispatch(resetFilter())
+    } else {
+      dispatch(filterByGenres(value));
+    }
   };
 
   const handlerRating = (event) => {
     const value = event.target.value;
-    return value === "resetFilter"
-      ? dispatch(resetFilter())
-      : dispatch(orderCardsByRating(value));
+    console.log(value);
+    if (value === "resetFilter") {
+      dispatch(resetFilter());
+    } else {
+      dispatch(orderCardsByRating(value));
+    }
   };
   const handlerName = (event) => {
     const value = event.target.value;
-    dispatch(orderCardsByName(value));
+    if (value === "resetFilter") {
+      dispatch(resetFilter())
+    } else {
+      dispatch(orderCardsByName(value));
+    }
   };
 
   const handlerOrigin = (event) => {
     const value = event.target.value;
-    dispatch(filterByOrigin(value));
+    if (value === "resetFilter") {
+      dispatch(resetFilter())
+    } else {
+      dispatch(filterByOrigin(value));
+    }
   };
 
   return (
@@ -66,11 +80,8 @@ const SideBar = () => {
       <br />
       <select onChange={handlerOrigin}>
         <option value="resetFilter">Filter By Origin</option>
-        {genres.map((genre) => (
-          <option key={genre.id} value={genre.name}>
-            {genre.name}
-          </option>
-        ))}
+        <option value="database">Database</option>
+        <option value="api">Api</option>
       </select>
     </aside>
   );

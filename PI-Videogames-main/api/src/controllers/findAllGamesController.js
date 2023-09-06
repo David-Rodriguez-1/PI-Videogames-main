@@ -15,7 +15,7 @@ const findAllGame = async () => {
       },
     },
   });
-
+  
   const dbGamesClean = dBGames.map(vg => {
     return {
       id: vg.id,
@@ -25,7 +25,8 @@ const findAllGame = async () => {
       background_image: vg.background_image,
       releaseDate: vg.releaseDate,
       rating: vg.rating,
-      genres: vg.genres.map(g=>g.name)
+      genres: vg.genres.map(g => g.name),
+      origin: "database"
     }
   })
 
@@ -50,6 +51,7 @@ const findAllGame = async () => {
       platforms: game.platforms.map((p) => p.platform.name),
       rating: game.rating,
       genres: game.genres.map((g) => g.name),
+      origin: "api"
     };
   });
   return [...dbGamesClean, ...apiClean];
