@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Sequelize } = require('sequelize');
+const { Sequelize, HasMany } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
@@ -33,8 +33,14 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Videogame, Genre } = sequelize.models;
 
 // Aca vendrian las relaciones
-Videogame.belongsToMany(Genre, { through: "VideogameGenre" });
-Genre.belongsToMany(Videogame, { through: "VideogameGenre" });
+Videogame.belongsToMany(Genre, {
+  through: "VideogameGenre",
+  timestamps: false,
+});
+Genre.belongsToMany(Videogame, {
+  through: "VideogameGenre",
+  timestamps: false,
+});
 // Product.hasMany(Reviews);
 
 module.exports = {

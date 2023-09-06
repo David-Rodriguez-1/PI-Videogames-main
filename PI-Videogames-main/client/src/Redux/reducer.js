@@ -56,10 +56,12 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case FILTER_BY_GENRES:
+      console.log(action.payload);
+      console.log(state.allVideoGames);
       return {
         ...state,
-        games: [
-          ...state.allVideoGames.filter((game) =>
+        allVideoGames: [
+          ...state.games.filter((game) =>
             game.genres.includes(action.payload)
           ),
         ],

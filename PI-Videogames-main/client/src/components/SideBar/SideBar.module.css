@@ -2,3 +2,7 @@
     color: antiquewhite;
     width: inherit;
 }
+
+.filterGenres{
+    width: 5rem;
+}

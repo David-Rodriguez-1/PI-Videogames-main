@@ -2,18 +2,32 @@ const { Videogame, Genre } = require("../db");
 const { Op } = require("sequelize");
 const { API_KEY } = process.env;
 const axios = require("axios");
+const db = require("../db");
 
 // Traigo todos los juegos de DB y API
 const findAllGame = async () => {
   const dBGames = await Videogame.findAll({
     include: {
       model: Genre,
-      attributes: ["name"],
+      atributes: ["name"],
       through: {
-        attributes: [],
+        atributes: [],
       },
     },
   });
+
+  const dbGamesClean = dBGames.map(vg => {
+    return {
+      id: vg.id,
+      name: vg.name,
+      description: vg.description,
+      platforms: vg.platforms,
+      background_image: vg.background_image,
+      releaseDate: vg.releaseDate,
+      rating: vg.rating,
+      genres: vg.genres.map(g=>g.name)
+    }
+  })
 
   //!   ***Hacer Paginado***
   // const page1 = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`).then((res) => res.data);
@@ -38,7 +52,7 @@ const findAllGame = async () => {
       genres: game.genres.map((g) => g.name),
     };
   });
-  return [...dBGames, ...apiClean];
+  return [...dbGamesClean, ...apiClean];
 };
 
 //? Obtengo el juego por name
