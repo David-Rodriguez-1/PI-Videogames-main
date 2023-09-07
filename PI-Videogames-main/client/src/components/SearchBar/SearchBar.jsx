@@ -19,13 +19,11 @@ const SearchBar = () => {
 
     return (
       <nav className={style.navBar}>
-        <input type="text" name={input} onChange={handleInput} placeholder='Search by name' />
-        <button onClick={searchHandler}>Search</button>
-        <div>
+        <input type="text" className={style.input} name={input} onChange={handleInput} placeholder='Search games' />
+        <button className={style.btnSearch} onClick={searchHandler}>Search</button>
+        <div className={style.createDiv}>
           <Link to={'/createVideoGame'}>
-            <button>
-              <span>Create Video Game</span>
-            </button>
+            <button className={style.btnCreate}>Create game</button>
           </Link>
         </div>
       </nav>

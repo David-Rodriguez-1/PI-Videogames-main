@@ -1,6 +1,50 @@
 .navBar{
-    border-bottom: 1px solid #333333;
+    border-bottom: 1px solid #7b7b7b;
+    background-color: #232323;
     display: flex;
-    justify-content: space-around;
+    justify-content: end;
     padding: 1rem;
+}
+
+.btnSearch{
+    position: relative;
+    right: 49%;
+    font-family: 'Rubik', sans-serif;
+    border: none;
+    background-color: transparent;
+    color: #FFFFFF;
+    transition: 0.2s;
+}
+.btnSearch:hover{
+    color: #7b7b7b;
+    border-bottom: solid 2px #7b7b7b;
+}
+
+.input{
+    position: relative;
+    right: 50%;
+    width: 18rem;
+    background-color: #7b7b7b;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+input::placeholder{
+    font-family: 'Rubik', sans-serif;
+    color: #ffffff8d;
+}
+
+.btnCreate{
+    font-family: 'Rubik', sans-serif;
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+    transition: 0.3s;
+}
+
+.btnCreate:hover{
+    background-color: #434343;
+    /* border-bottom: solid 2px #ffffff8d; */
 }

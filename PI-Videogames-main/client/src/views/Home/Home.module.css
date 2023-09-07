@@ -3,10 +3,11 @@
 }
 
 .aside{
-    width: 14rem;
-    border-right: 1px solid #000;
+    width:calc(100vw -20%);
+    border-right: 1px solid #7b7b7b;
+    background: #232323;
 }
 
-.cardMain{
-    width: 100%
+.cardsMain{
+    width: calc(100% - 20%);
 }
