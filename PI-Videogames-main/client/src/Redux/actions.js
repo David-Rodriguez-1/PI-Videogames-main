@@ -31,7 +31,7 @@ const getGenres = () => {
 const getDetailVideoGame = (idVideogame) => {
   return async function (dispatch) {
     const { data } = await axios.get(`${URL_GAMES}/${idVideogame}`);
-    dispatch({ type: GET_DETAILVIDEOGAME, payload: data[0] });
+    dispatch({ type: GET_DETAILVIDEOGAME, payload: data[0]});
   };
 };
 
@@ -43,7 +43,6 @@ const getVideoGameByName = (search) => {
 };
 
 const orderCardsByRating = (order) => {
-  console.log(order);
   return function (dispatch) {
     dispatch({ type: ORDER_BY_RATING, payload: order });
   }

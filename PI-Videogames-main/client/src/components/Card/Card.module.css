@@ -1,7 +1,8 @@
 .card {
   width: 12rem;
   height: 15rem;
-  border: 1px solid #636363;
+  border: 2px solid;
+  border-image: linear-gradient(90deg, #F1316D, #4E1A6C)0.5;
   border-radius: 0.4rem;
   font-family: "Rubik", sans-serif;
   color: #FFFFFF;

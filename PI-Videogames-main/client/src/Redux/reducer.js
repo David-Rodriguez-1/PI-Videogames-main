@@ -42,13 +42,10 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allVideoGames: gamesByRating.sort((a, b) => {
-          // return action.payload === "Ascendant"
-          //   ? b.rating - a.rating
-          //   : a.rating - b.rating;
           if (action.payload === "Ascendant") {
-            return b.rating - a.rating;
-          } else if (action.payload === "Descendant") {
             return a.rating - b.rating;
+          } else if (action.payload === "Descendant") {
+            return b.rating - a.rating;
           }
           return gamesByRating;
         }),
