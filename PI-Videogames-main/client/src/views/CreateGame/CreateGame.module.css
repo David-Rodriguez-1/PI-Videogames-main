@@ -28,12 +28,14 @@
     display: flex;
     flex-direction: column;
     >input{
+        border: none;
         width: 50%;
         position: relative;
         left: 25%;
         background-color: #858585;
     }
     >textarea{
+        border: none;
         width: 50%;
         position: relative;
         left: 25%;
@@ -59,4 +61,8 @@
     width: 25%;
     position: relative;
     left: 37%;
+}
+
+.errors{
+    color: rgb(154, 126, 0);
 }

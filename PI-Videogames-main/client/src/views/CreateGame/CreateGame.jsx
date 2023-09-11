@@ -15,18 +15,18 @@ const CreateGame = () => {
     rating: 0,
     genres: [],
   });
+
   const handlerInput = (event) => {
     const property = event.target.name;
     const value = event.target.value;
-    setForm({ ...form, [property]: value });
     setErrors(validateInput({ ...errors, [property]: value }));
+    setForm({ ...form, [property]: value });
   };
 
   const handlerCheckGenres = (event) => {
     const value = event.target.value;
     const check = event.target.checked;
     const valueN = parseInt(value);
-
     if (check) {
       setForm((prevState) => ({
         ...prevState,
@@ -103,6 +103,7 @@ const CreateGame = () => {
         onSubmit={handlerSubmit}>
         <div className={style.inputs}>
           <label htmlFor="name">Name: </label>
+          <span className={style.errors}>{errors.name}</span>
           <input
             type="text"
             id="name"
@@ -112,6 +113,7 @@ const CreateGame = () => {
           />
 
           <label htmlFor="description">Descriptions:</label>
+          <span className={style.errors}>{errors.description}</span>
           <textarea
             type="text"
             id="description"
@@ -378,7 +380,9 @@ const CreateGame = () => {
         </div>
         <br />
         <button className={style.btnCreate}>Create</button>
-        <Link to={"/home"}className={style.btnBack}>Back to Home</Link>
+        <Link to={"/home"} className={style.btnBack}>
+          Back to Home
+        </Link>
       </form>
     </main>
   );

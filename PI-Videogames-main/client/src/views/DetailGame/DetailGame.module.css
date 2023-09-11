@@ -27,7 +27,7 @@
     text-align: start;
     width: 95%;
     padding-left: 2rem;
-    color: #ffffff;
+    color: #afafaf;
 }
 .genres{
     font-family: 'Rubik', sans-serif;
@@ -38,6 +38,19 @@
         list-style: none;
     }
 }
+
+.description_h3{
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color: #8585856e;
+    padding-right: 1.5rem;
+    font-family: 'Rubik', sans-serif;
+    color: #ffffff;
+}
+
 .platforms{
     font-family: 'Rubik', sans-serif;
     color: #ffffff;
@@ -50,4 +63,31 @@
 
 .rating{
     font-family: 'Rubik', sans-serif;
+    color: #afafaf;
+    font-weight: 700;
+}
+
+.btn_Back{
+    font-family: 'Rubik',sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    position: absolute;
+    display: flex;
+    margin-left: 1rem;
+    top: 1rem;
+    background: rgb(75, 75, 75);
+    border-radius: 15px;
+    border: none;
+}
+
+@media screen and (max-width:1000px) { 
+    .info{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:700px) { 
+    .img{
+        width: 1rem;
+    }
 }
