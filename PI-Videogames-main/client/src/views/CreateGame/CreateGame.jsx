@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
+import style from "./CreateGame.module.css";
+import { Link } from "react-router-dom";
 
 const CreateGame = () => {
-
   const [errors, setErrors] = useState({ form: "Must complete the form" });
 
   const [form, setForm] = useState({
@@ -24,7 +25,7 @@ const CreateGame = () => {
   const handlerCheckGenres = (event) => {
     const value = event.target.value;
     const check = event.target.checked;
-    const valueN = parseInt(value)
+    const valueN = parseInt(value);
 
     if (check) {
       setForm((prevState) => ({
@@ -94,59 +95,63 @@ const CreateGame = () => {
       .catch((err) => alert(err));
   };
   return (
-    <main>
-      <h1>CREATING VIDEOGAME</h1>
-      <form action="form" onSubmit={handlerSubmit}>
-        <label htmlFor="name">Name: </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={form.name}
-          onChange={handlerInput}
-        />
+    <main className={style.main}>
+      <h1 className={style.h1}>CREATING VIDEOGAME</h1>
+      <form
+        className={style.formContainer}
+        action="form"
+        onSubmit={handlerSubmit}>
+        <div className={style.inputs}>
+          <label htmlFor="name">Name: </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={form.name}
+            onChange={handlerInput}
+          />
 
-        <label htmlFor="description">Descriptions:</label>
-        <input
-          type="text"
-          id="description"
-          name="description"
-          value={form.description}
-          onChange={handlerInput}
-        />
+          <label htmlFor="description">Descriptions:</label>
+          <textarea
+            type="text"
+            id="description"
+            name="description"
+            value={form.description}
+            onChange={handlerInput}
+          />
 
-        <label htmlFor="background_image">Image:</label>
-        <input
-          type="text"
-          id="background_image"
-          name="background_image"
-          value={form.background_image}
-          onChange={handlerInput}
-        />
+          <label htmlFor="background_image">Image:</label>
+          <input
+            type="text"
+            id="background_image"
+            name="background_image"
+            value={form.background_image}
+            onChange={handlerInput}
+          />
 
-        <label htmlFor="releasedDate">Release Date: </label>
-        <input
-          type="date"
-          id="releaseDate"
-          name="releaseDate"
-          value={form.releaseDate}
-          onChange={handlerInput}
-        />
+          <label htmlFor="releasedDate">Release Date: </label>
+          <input
+            type="date"
+            id="releaseDate"
+            name="releaseDate"
+            value={form.releaseDate}
+            onChange={handlerInput}
+          />
 
-        <label htmlFor="rating">Rating:</label>
-        <input
-          type="number"
-          id="rating"
-          name="rating"
-          value={form.rating}
-          onChange={handlerInput}
-        />
-
-        <label className="title-name">
-          <strong>Genres: </strong>
-        </label>
-        <div id="genres">
-          <div className="Action">
+          <label htmlFor="rating">Rating:</label>
+          <input
+            type="number"
+            id="rating"
+            name="rating"
+            value={form.rating}
+            onChange={handlerInput}
+          />
+        </div>
+        <div className={style.genres}>
+          <div className={style.genresTitle}>
+            <h2>Genres: </h2>
+          </div>
+          <div className={style.checkboxs}>
             <label htmlFor="Action">Action.</label>
             <input
               name="Action"
@@ -155,8 +160,6 @@ const CreateGame = () => {
               id="Action"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div className="Indie">
             <label htmlFor="Indie">Indie.</label>
             <input
               name="Indie"
@@ -165,8 +168,6 @@ const CreateGame = () => {
               id="Indie"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div className="Adventure">
             <label htmlFor="Adventure">Adventure</label>
             <input
               name="Adventure"
@@ -175,8 +176,6 @@ const CreateGame = () => {
               id="Adventure"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div>
             <label htmlFor="RPG">RPG</label>
             <input
               name="RPG"
@@ -185,8 +184,6 @@ const CreateGame = () => {
               id="RPG"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div>
             <label htmlFor="Strategy">Strategy</label>
             <input
               name="Strategy"
@@ -195,8 +192,6 @@ const CreateGame = () => {
               id="Strategy"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div>
             <label htmlFor="Shooter">Shooter</label>
             <input
               name="Shooter"
@@ -205,8 +200,6 @@ const CreateGame = () => {
               id="Shooter"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div>
             <label htmlFor="Casual">Casual</label>
             <input
               name="Casual"
@@ -215,8 +208,6 @@ const CreateGame = () => {
               id="Casual"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div>
             <label htmlFor="Simulation">Simulation</label>
             <input
               name="Simulation"
@@ -225,8 +216,6 @@ const CreateGame = () => {
               id="Simulation"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div>
             <label htmlFor="Puzzle">Puzzle</label>
             <input
               name="Puzzle"
@@ -235,8 +224,6 @@ const CreateGame = () => {
               id="Puzzle"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div>
             <label htmlFor="Arcade">Arcade</label>
             <input
               name="Arcade"
@@ -245,8 +232,6 @@ const CreateGame = () => {
               id="Arcade"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div>
             <label htmlFor="Platformer">Platformer</label>
             <input
               name="Platformer"
@@ -255,8 +240,6 @@ const CreateGame = () => {
               id="Platformer"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div>
             <label htmlFor="Racing">Racing</label>
             <input
               name="Racing"
@@ -265,8 +248,6 @@ const CreateGame = () => {
               id="Racing"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div>
             <label htmlFor="Massively-Multiplayer">Massively-Multiplayer</label>
             <input
               name="Massively-Multiplayer"
@@ -275,8 +256,6 @@ const CreateGame = () => {
               id="Massively-Multiplayer"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div>
             <label htmlFor="Sports">Sports</label>
             <input
               name="Sports"
@@ -285,8 +264,6 @@ const CreateGame = () => {
               id="Sports"
               onChange={handlerCheckGenres}
             />
-          </div>
-          <div>
             <label htmlFor="Fighting">Fighting</label>
             <input
               name="Fighting"
@@ -330,93 +307,78 @@ const CreateGame = () => {
           </div>
         </div>
 
-        <label className="title-name">
-          <strong>Platforms: </strong>{" "}
-        </label>
-        <div id="platforms" className="plat-div">
-          <div>
-            <label htmlFor="PC">PC</label>
-            <input
-              name="PC"
-              value="PC"
-              type="checkbox"
-              id="PC"
-              onChange={handlerCheckPlataforms}
-            />
-          </div>
-          <div>
-            <label htmlFor="iOS">iOS</label>
-            <input
-              name="iOS"
-              value="iOS"
-              type="checkbox"
-              id="iOS"
-              onChange={handlerCheckPlataforms}
-            />
-          </div>
-          <div>
-            <label htmlFor="Android">Android</label>
-            <input
-              name="Android"
-              value="Android"
-              type="checkbox"
-              id="Android"
-              onChange={handlerCheckPlataforms}
-            />
-          </div>
-          <div>
-            <label htmlFor="macOS">macOS</label>
-            <input
-              name="macOS"
-              value="macOS"
-              type="checkbox"
-              id="macOS"
-              onChange={handlerCheckPlataforms}
-            />
-          </div>
-          <div>
-            <label htmlFor="PlayStation 4">PlayStation 4</label>
-            <input
-              name="PlayStation 4"
-              value="PlayStation 4"
-              type="checkbox"
-              id="PlayStation 4"
-              onChange={handlerCheckPlataforms}
-            />
-          </div>
-          <div>
-            <label htmlFor="PlayStation 5">PlayStation 5</label>
-            <input
-              name="PlayStation 5"
-              value="PlayStation 5"
-              type="checkbox"
-              id="PlayStation 5"
-              onChange={handlerCheckPlataforms}
-            />
-          </div>
-          <div>
-            <label htmlFor="XBOX">XBOX</label>
-            <input
-              name="XBOX"
-              value="XBOX"
-              type="checkbox"
-              id="XBOX"
-              onChange={handlerCheckPlataforms}
-            />
-          </div>
-          <div>
-            <label htmlFor="PS Vita">PS Vita</label>
-            <input
-              name="PS Vita"
-              value="PS Vita"
-              type="checkbox"
-              id="PS Vita"
-              onChange={handlerCheckPlataforms}
-            />
-          </div>
+        <div className="platform-title">
+          <h2>Platforms: </h2>
+        </div>
+        <div className={style.platforms}>
+          <label htmlFor="PC">PC</label>
+          <input
+            name="PC"
+            value="PC"
+            type="checkbox"
+            id="PC"
+            onChange={handlerCheckPlataforms}
+          />
+          <label htmlFor="iOS">iOS</label>
+          <input
+            name="iOS"
+            value="iOS"
+            type="checkbox"
+            id="iOS"
+            onChange={handlerCheckPlataforms}
+          />
+          <label htmlFor="Android">Android</label>
+          <input
+            name="Android"
+            value="Android"
+            type="checkbox"
+            id="Android"
+            onChange={handlerCheckPlataforms}
+          />
+          <label htmlFor="macOS">macOS</label>
+          <input
+            name="macOS"
+            value="macOS"
+            type="checkbox"
+            id="macOS"
+            onChange={handlerCheckPlataforms}
+          />
+          <label htmlFor="PlayStation 4">PlayStation 4</label>
+          <input
+            name="PlayStation 4"
+            value="PlayStation 4"
+            type="checkbox"
+            id="PlayStation 4"
+            onChange={handlerCheckPlataforms}
+          />
+          <label htmlFor="PlayStation 5">PlayStation 5</label>
+          <input
+            name="PlayStation 5"
+            value="PlayStation 5"
+            type="checkbox"
+            id="PlayStation 5"
+            onChange={handlerCheckPlataforms}
+          />
+          <label htmlFor="XBOX">XBOX</label>
+          <input
+            name="XBOX"
+            value="XBOX"
+            type="checkbox"
+            id="XBOX"
+            onChange={handlerCheckPlataforms}
+          />
+          <label htmlFor="PS Vita">PS Vita</label>
+          <input
+            name="PS Vita"
+            value="PS Vita"
+            type="checkbox"
+            id="PS Vita"
+            onChange={handlerCheckPlataforms}
+          />
         </div>
         <br />
-        <button>Create</button>
+        <button className={style.btnCreate}>Create</button>
+        <Link to={"/home"}className={style.btnBack}>Back to Home</Link>
       </form>
     </main>
   );
