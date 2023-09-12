@@ -15,8 +15,8 @@ const findAllGame = async () => {
       },
     },
   });
-  
-  const dbGamesClean = dBGames.map(vg => {
+
+  const dbGamesClean = dBGames.map((vg) => {
     return {
       id: vg.id,
       name: vg.name,
@@ -25,23 +25,22 @@ const findAllGame = async () => {
       background_image: vg.background_image,
       releaseDate: vg.releaseDate,
       rating: vg.rating,
-      genres: vg.genres.map(g => g.name),
-      origin: "database"
-    }
-  })
+      genres: vg.genres.map((g) => g.name),
+      origin: "database",
+    };
+  });
 
-  //!   ***Hacer Paginado***
-   let apiGames = [];
-   for (let i = 1; i <= 7; i++)
-     apiGames = [
-       ...apiGames,
-       ...(
-         await axios.get(
-           `https://api.rawg.io/api/games?page=${i}&page_size=20&key=${API_KEY}`
-         )
-       ).data.results,
+  let apiGames = [];
+  for (let i = 1; i <= 7; i++)
+    apiGames = [
+      ...apiGames,
+      ...(
+        await axios.get(
+          `https://api.rawg.io/api/games?page=${i}&page_size=20&key=${API_KEY}`
+        )
+      ).data.results,
     ];
-  
+
   const apiClean = apiGames.map((game) => {
     return {
       id: game.id,
@@ -50,7 +49,7 @@ const findAllGame = async () => {
       platforms: game.platforms.map((p) => p.platform.name),
       rating: game.rating,
       genres: game.genres.map((g) => g.name),
-      origin: "api"
+      origin: "api",
     };
   });
   return [...dbGamesClean, ...apiClean];
