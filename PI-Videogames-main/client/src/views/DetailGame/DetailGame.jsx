@@ -17,8 +17,9 @@ const DetailGame = () => {
 
   return (
     <div className={style.detailContainer}>
-      <Link to={'/home'}>
-      <button className={style.btn_Back}>Back to Home</button>
+      <img className={style.background_img} src={detailVideoGame.background_image_additional} alt="" />
+      <Link to={"/home"}>
+        <button className={style.btn_Back}>Back to Home</button>
       </Link>
       <h1>{detailVideoGame.name}</h1>
       <img
@@ -26,7 +27,7 @@ const DetailGame = () => {
         src={detailVideoGame.background_image}
         alt={detailVideoGame.name}
       />
-      <p className={style.rating}>Rating:{detailVideoGame.rating}</p>
+      <p className={style.rating}>Rating : {detailVideoGame.rating}</p>
       <div className={style.info}>
         <p className={style.description_h3}>
           Description:

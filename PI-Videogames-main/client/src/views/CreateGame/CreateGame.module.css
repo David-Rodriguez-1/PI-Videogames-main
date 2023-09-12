@@ -22,6 +22,7 @@
 
 .checkboxs{
     color: #858585;
+    padding: 3rem;
 }
 
 .inputs{
@@ -29,6 +30,7 @@
     flex-direction: column;
     >input{
         border: none;
+        text-align: center;
         width: 50%;
         position: relative;
         left: 25%;

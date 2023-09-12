@@ -2,9 +2,18 @@ import { useState } from "react";
 import axios from "axios";
 import style from "./CreateGame.module.css";
 import { Link } from "react-router-dom";
+import validateInput from "./validate";
 
 const CreateGame = () => {
-  const [errors, setErrors] = useState({ form: "Must complete the form" });
+  const [errors, setErrors] = useState({
+    name: "",
+    description: "",
+    platforms: [],
+    background_image: "",
+    releaseDate: "",
+    rating: "",
+    genres: [],
+  });
 
   const [form, setForm] = useState({
     name: "",
@@ -12,14 +21,14 @@ const CreateGame = () => {
     platforms: [],
     background_image: "",
     releaseDate: "",
-    rating: 0,
+    rating: "",
     genres: [],
   });
 
   const handlerInput = (event) => {
     const property = event.target.name;
     const value = event.target.value;
-    setErrors(validateInput({ ...errors, [property]: value }));
+    setErrors(validateInput({ ...form, [property]: value }));
     setForm({ ...form, [property]: value });
   };
 
@@ -38,7 +47,6 @@ const CreateGame = () => {
         genres: form.genres.filter((x) => valueN !== x),
       }));
     }
-    setErrors(validateCheckBox({ ...form, [check]: valueN }));
   };
 
   const handlerCheckPlataforms = (event) => {
@@ -55,40 +63,18 @@ const CreateGame = () => {
         platforms: form.platforms.filter((x) => value !== x),
       }));
     }
-    setErrors(validateCheckBox({ ...form, [check]: value }));
-  };
-
-  const validateInput = (form) => {
-    let errors = {};
-    if (!form.name) {
-      errors.name = "Name is required";
-    } else if (form.name.length < 3) {
-      errors.name = "Game Name must have at least 3 characters";
-    }
-    if (!form.description) {
-      errors.description = "Description is required";
-    } else if (form.description.length < 15) {
-      errors.description = "Description must have at least 15 characters";
-    }
-    if (!form.rating) {
-      errors.rating = "Rating is required";
-    } else if (!/^[1-5]$/.test(form.rating)) {
-      errors.rating = "Rating must be between 1 and 5";
-    }
-    return errors;
-  };
-
-  const validateCheckBox = (form) => {
-    let errorsCkecks = [];
-    if (form.genres.length < 1) errorsCkecks.push("Genres is required");
-    if (form.platforms.length < 1) errorsCkecks.push("Platforms is required");
-    return errorsCkecks;
   };
 
   const handlerSubmit = (event) => {
     event.preventDefault();
     validateInput(form);
-    validateCheckBox(form);
+    let errorsCkecks = [];
+    if (form.genres.length < 1) errorsCkecks.push("Genres is required");
+    if (form.platforms.length < 1)
+      errorsCkecks.push("Platforms is required");
+    if (Object.values(errors).length || errorsCkecks.length) {
+      return alert(Object.values(errors).concat(errorsCkecks).join("\n"));
+    }
     axios
       .post("http://localhost:3001/videogames", form)
       .then((res) => alert(res))
@@ -123,15 +109,18 @@ const CreateGame = () => {
           />
 
           <label htmlFor="background_image">Image:</label>
+          <span className={style.errors}>{errors.background_image}</span>
           <input
             type="text"
             id="background_image"
             name="background_image"
             value={form.background_image}
+            placeholder="URLs"
             onChange={handlerInput}
           />
 
           <label htmlFor="releasedDate">Release Date: </label>
+          <span className={style.errors}>{errors.releaseDate}</span>
           <input
             type="date"
             id="releaseDate"
@@ -141,6 +130,7 @@ const CreateGame = () => {
           />
 
           <label htmlFor="rating">Rating:</label>
+          <span className={style.errors}>{errors.rating}</span>
           <input
             type="number"
             id="rating"
@@ -378,6 +368,7 @@ const CreateGame = () => {
             onChange={handlerCheckPlataforms}
           />
         </div>
+
         <br />
         <button className={style.btnCreate}>Create</button>
         <Link to={"/home"} className={style.btnBack}>

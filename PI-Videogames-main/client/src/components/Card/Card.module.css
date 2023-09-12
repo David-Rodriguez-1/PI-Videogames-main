@@ -7,10 +7,22 @@
   border-radius: 0.4rem;
   font-family: "Rubik", sans-serif;
   color: #FFFFFF;
+  transition: 0.3s;
   > img {
-    max-width: 10rem;
+    object-fit: cover;
+    width: 90%;
+    height: 50%;
     border-radius: 1rem;
   }
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.backgound_img{
+  position: absolute;
+  
 }
 
 .rating{
