@@ -77,7 +77,7 @@ const CreateGame = () => {
     }
     axios
       .post("http://localhost:3001/videogames", form)
-      .then((res) => alert(res))
+      .then((res) => alert("Created"))
       .catch((err) => alert(err));
   };
   return (
