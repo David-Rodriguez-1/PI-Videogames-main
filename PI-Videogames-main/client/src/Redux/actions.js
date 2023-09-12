@@ -61,7 +61,6 @@ const filterByGenres = (filter) => {
 }
  
 const filterByOrigin = (filter) => {
-  console.log(filter);
   return function (dispatch) {
     dispatch({ type: FILTER_BY_ORIGIN, payload: filter });
   };
