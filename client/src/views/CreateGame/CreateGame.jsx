@@ -135,6 +135,7 @@ const CreateGame = () => {
             type="number"
             id="rating"
             name="rating"
+            step="0.01"
             value={form.rating}
             onChange={handlerInput}
           />

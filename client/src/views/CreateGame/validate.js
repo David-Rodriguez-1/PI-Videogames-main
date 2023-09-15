@@ -1,8 +1,8 @@
 const regexImage =
   /(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/;
-  
-const regexRating = /^[1-5]$/g;
-// const regexDate = /^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(17\d{2}|18\d{2}|19\d{2}|20[01]\d|202[0-3])$/;
+const regexRating = /^[1-5](\.\d+)?$/;
+const regexDate =
+  /^(17\d{2}|18\d{2}|19\d{2}|20[0123]\d)-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
 
 const validateInput = (form) => {
   let errors = {};
@@ -20,7 +20,8 @@ const validateInput = (form) => {
     errors.background_image = "Image invalid";
 
   if (form.releaseDate === "") errors.releaseDate = "Release Date is required";
-  // else if (!regexDate.test(form.releaseDate)) errors.releaseDate = "Invalid date";
+  else if (!regexDate.test(form.releaseDate))
+    errors.releaseDate = "Invalid date";
 
   if (form.rating === "") {
     errors.rating = "Rating is required";

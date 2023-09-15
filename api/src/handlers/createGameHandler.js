@@ -17,7 +17,7 @@ const createGameHandler = async (req, res) => {
       platforms,
       background_image,
       releaseDate,
-      parseInt(rating)
+      rating
     );
     newGame.addGenre(genres)
     res.status(201).json(newGame);
