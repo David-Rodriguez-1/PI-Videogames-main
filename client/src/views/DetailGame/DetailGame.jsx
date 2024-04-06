@@ -13,6 +13,9 @@ const DetailGame = () => {
 
   useEffect(() => {
     dispatch(getDetailVideoGame(idVideogame));
+    return () => {
+      dispatch(getDetailVideoGame());
+    }
   }, [dispatch, idVideogame]);
 
   return (

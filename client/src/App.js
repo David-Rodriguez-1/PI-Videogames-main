@@ -1,6 +1,8 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { Landing, Home, DetailGame, CreateGame} from "./views";
+import { Landing, Home, DetailGame, CreateGame } from "./views";
+
+
 
 function App() {
   // const location = useLocation();

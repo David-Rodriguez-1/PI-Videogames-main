@@ -1,0 +1,9 @@
+.card_lazy {
+  position: relative;
+  width: 12rem;
+  height: 15rem;
+  background-color: rgb(36, 36, 36);
+  /* background-color: rgb(113, 113, 113); */
+  border-radius: 0.4rem;
+  font-family: 'Rubik', sans-serif;
+}
