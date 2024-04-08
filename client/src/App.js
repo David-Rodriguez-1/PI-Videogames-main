@@ -5,11 +5,9 @@ import { Landing, Home, DetailGame, CreateGame } from "./views";
 
 
 function App() {
-  // const location = useLocation();
 
   return (
     <div className="App">
-      {/* {location.pathname !== "/" && <SearchBar />} */}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />

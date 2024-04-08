@@ -12,3 +12,15 @@
 .cardsMain{
     width: calc(100% - 20%);
 }
+
+@media screen and (max-width: 700px) {
+    .aside{
+        position: absolute;
+        width: 100%;
+        height: auto;
+    }
+    .cardsMain{
+        margin-top: 18rem;
+        width: 100%;
+    }
+}
