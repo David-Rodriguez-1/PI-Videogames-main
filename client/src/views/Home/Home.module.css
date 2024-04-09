@@ -4,7 +4,6 @@
 }
 
 .aside{
-    width:calc(100vw -20%);
     border-right: 1px solid #7b7b7b;
     background: #232323;
 }
