@@ -13,8 +13,6 @@ import {
 
 const URL_GAMES = "http://localhost:8001/videogames";
 const URL_GENRES = 'http://localhost:8001/genres'
-// const URL_GAMES = 'https://pi-videogames-main-back.vercel.app/'
-// const URL_GENRES = 'https://pi-videogames-main-back.vercel.app/genre'
 
 const getVideoGames = () => {
   return async function (dispatch) {
