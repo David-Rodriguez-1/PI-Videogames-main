@@ -9,7 +9,7 @@ import Pagination from '../Pagination/Pagination'
 const Card = lazy(() => import('../Card/Card'))
 
 const CardsContainer = () => {
-  const games = useSelector((state) => state.allVideoGames)
+  const games = useSelector((state) => state.filteredGames)
 
   const gamesAtPage = 15
   const pagesNumber = Math.ceil(games.length / gamesAtPage)

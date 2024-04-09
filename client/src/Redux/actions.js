@@ -35,12 +35,12 @@ const getDetailVideoGame = (idVideogame) => {
   };
 };
 
-const getVideoGameByName = (search) => {
-  return async function (dispatch) {
-    const { data } = await axios.get(`${URL_GAMES}?search=${search}`);
-    dispatch({ type: GET_VIDEOGAMESBYNAME, payload: data });
-  };
-};
+const getVideoGameByName = (value) => {
+  return {
+    type: GET_VIDEOGAMESBYNAME,
+    payload: value
+  }
+}
 
 const orderCardsByRating = (order) => {
   return function (dispatch) {
@@ -59,7 +59,7 @@ const filterByGenres = (filter) => {
     dispatch({ type: FILTER_BY_GENRES, payload: filter });
   }
 }
- 
+
 const filterByOrigin = (filter) => {
   return function (dispatch) {
     dispatch({ type: FILTER_BY_ORIGIN, payload: filter });
@@ -81,4 +81,4 @@ export {
   getGenres,
   filterByOrigin,
   resetFilter,
-};
+}

@@ -5,7 +5,7 @@ const Landing = () => {
   return (
     <main className={style.main}>
       <div className={style.textContainer}>
-      <h1 className={style.h1}>VIDEOGAMES by SOY HENRY</h1>
+      <h1 className={style.h1}>VIDEOGAMES</h1>
       </div>
         <Link to={"/home"}>
           <button className={style.btnInsert}>Insert coin!</button>
