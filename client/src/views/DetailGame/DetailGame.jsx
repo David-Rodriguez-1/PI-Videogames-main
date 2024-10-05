@@ -28,7 +28,7 @@ const DetailGame = () => {
       <Link to={'/home'}>
         <button className={style.btn_Back}>Back to Home</button>
       </Link>
-      <h1 className={style.name}>{detailVideoGame.name}</h1>
+      <h2 className={style.name}>{detailVideoGame.name}</h2>
       <img
         className={style.img}
         src={detailVideoGame.background_image}

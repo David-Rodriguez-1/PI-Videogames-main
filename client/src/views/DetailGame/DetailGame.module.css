@@ -4,8 +4,11 @@
 
 .name {
   color: #ffffffc3;
+  text-decoration: dotted;
+  text-shadow: 1px 1px black;
   font-family: 'Rubik', sans-serif;
   font-size: 3rem;
+  padding: 3rem 0;
 }
 
 .img {
@@ -81,12 +84,14 @@ li {
 
 .rating {
   font-family: 'Rubik', sans-serif;
-  color: #c8ff22;
+  color: #dddddd;
+  text-shadow: 1px 1px black;
   font-weight: 700;
 }
 
 .btn_Back {
   font-family: 'Rubik', sans-serif;
+  color: #ffffffc3;
   font-size: 1rem;
   font-weight: 700;
   position: absolute;
@@ -97,7 +102,6 @@ li {
   background: rgb(75, 75, 75);
   border-radius: 15px;
   border: none;
-  box-shadow: 0px 0px 9px #c8ff22;
 }
 
 @media screen and (max-width: 1000px) {
@@ -112,7 +116,7 @@ li {
     width: 100%;
   }
   .btn_Back {
-    padding: 0.2rem;
+    padding: 0.8rem;
   }
   .info {
     padding: 0.5rem;

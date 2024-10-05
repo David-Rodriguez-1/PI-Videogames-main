@@ -1,3 +1,4 @@
+import { Children } from 'react'
 import {
   GET_VIDEOGAMES,
   GET_DETAILVIDEOGAME,
@@ -46,10 +47,10 @@ const rootReducer = (state = initialState, action) => {
       }
 
     case ORDER_BY_RATING:
-      const gamesByRating = [...state.allVideoGames]
+      let gamesByRating = [...state.allVideoGames]
       return {
         ...state,
-        allVideoGames: gamesByRating.sort((a, b) => {
+        filteredGames: gamesByRating.sort((a, b) => {
           if (action.payload === 'Ascendant') {
             return a.rating - b.rating
           } else if (action.payload === 'Descendant') {
@@ -63,7 +64,7 @@ const rootReducer = (state = initialState, action) => {
       const gamesByName = [...state.allVideoGames]
       return {
         ...state,
-        allVideoGames: gamesByName.sort((a, b) => {
+        filteredGames: gamesByName.sort((a, b) => {
           if (action.payload === 'Ascendant') {
             return b.name.localeCompare(a.name)
           } else if (action.payload === 'Descendant') {
@@ -76,7 +77,7 @@ const rootReducer = (state = initialState, action) => {
     case FILTER_BY_GENRES:
       return {
         ...state,
-        allVideoGames: [
+        filteredGames: [
           ...state.games.filter((game) => game.genres.includes(action.payload))
         ]
       }
@@ -84,13 +85,13 @@ const rootReducer = (state = initialState, action) => {
     case FILTER_BY_ORIGIN:
       return {
         ...state,
-        allVideoGames: [
+        filteredGames: [
           ...state.games.filter((game) => game.origin === action.payload)
         ]
       }
 
     case RESET_FILTER:
-      return { ...state, allVideoGames: [...state.games] }
+      return { ...state, filteredGames: [...state.games] }
 
     default:
       return { ...state }

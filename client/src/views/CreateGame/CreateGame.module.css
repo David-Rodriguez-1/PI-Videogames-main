@@ -13,6 +13,16 @@
     height: 100vh;
     color: #dfdfdf;
 }
+.checkContainer, .platformsContainer, .genres, .platforms{
+    display: flex;
+    justify-content: center;
+}
+.checkContainer{
+    gap: 5rem;
+}
+.platformsContainer, .genres, .platforms{
+    flex-direction: column;
+}
 
 .genres{
     display: flex;
@@ -22,7 +32,10 @@
 
 .checkboxs{
     color: #858585;
-    padding: 3rem;
+    text-align: start;
+}
+.platforms{
+    text-align: start;
 }
 
 .inputs{

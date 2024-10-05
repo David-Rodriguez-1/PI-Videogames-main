@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getVideoGameByName } from '../../Redux/actions'
 
 const SearchBar = () => {
-  const games = useSelector((state) => state.allVideoGames)
+  const games = useSelector((state) => state.filteredGames)
 
   const dispatch = useDispatch()
   const [input, setInput] = useState('')

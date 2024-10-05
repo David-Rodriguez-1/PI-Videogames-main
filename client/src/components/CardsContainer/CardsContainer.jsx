@@ -1,6 +1,5 @@
 import { Suspense, lazy } from 'react'
 import style from './CardsContainer.module.css'
-// import Card from "../Card/Card";
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
