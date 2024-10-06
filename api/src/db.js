@@ -11,8 +11,8 @@ const { DB_USER, DB_PASSWORD, DB_HOST} =
 // });
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/postgres`,
-  // "postgres://default:G0spMuDezCi1@ep-white-dream-27573542.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require",
+  // `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/postgres`,
+  "postgres://default:G0spMuDezCi1@ep-white-dream-27573542.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require",
   {
     logging: false, // set to console.log to see the raw SQL queries
     native: false // lets Sequelize know we can use pg-native for ~30% more speed
