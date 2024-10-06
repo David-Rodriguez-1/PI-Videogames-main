@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 import {
   GET_VIDEOGAMES,
   GET_DETAILVIDEOGAME,
@@ -8,32 +8,32 @@ import {
   FILTER_BY_GENRES,
   GET_GENRES,
   FILTER_BY_ORIGIN,
-  RESET_FILTER,
-} from "./action_types";
+  RESET_FILTER
+} from './action_types'
 
-const URL_GAMES = "http://localhost:8001/videogames";
-const URL_GENRES = 'http://localhost:8001/genres'
+const URL_GAMES = 'https://videogames-prod.vercel.app/videogames'
+const URL_GENRES = 'https://videogames-prod.vercel.app/genres'
 
 const getVideoGames = () => {
   return async function (dispatch) {
-    const { data } = await axios.get(URL_GAMES);
-    dispatch({ type: GET_VIDEOGAMES, payload: data });
-  };
-};
+    const { data } = await axios.get(URL_GAMES)
+    dispatch({ type: GET_VIDEOGAMES, payload: data })
+  }
+}
 
 const getGenres = () => {
   return async function (dispatch) {
-    const { data } = await axios.get(URL_GENRES);
-    dispatch({ type: GET_GENRES, payload: data });
-  };
-};
+    const { data } = await axios.get(URL_GENRES)
+    dispatch({ type: GET_GENRES, payload: data })
+  }
+}
 
 const getDetailVideoGame = (idVideogame) => {
   return async function (dispatch) {
-    const { data } = await axios.get(`${URL_GAMES}/${idVideogame}`);
-    dispatch({ type: GET_DETAILVIDEOGAME, payload: data[0]});
-  };
-};
+    const { data } = await axios.get(`${URL_GAMES}/${idVideogame}`)
+    dispatch({ type: GET_DETAILVIDEOGAME, payload: data[0] })
+  }
+}
 
 const getVideoGameByName = (value) => {
   return {
@@ -44,32 +44,31 @@ const getVideoGameByName = (value) => {
 
 const orderCardsByRating = (order) => {
   return function (dispatch) {
-    dispatch({ type: ORDER_BY_RATING, payload: order });
+    dispatch({ type: ORDER_BY_RATING, payload: order })
   }
 }
 
 const orderCardsByName = (order) => {
   return function (dispatch) {
-    dispatch({ type: ORDER_BY_NAME, payload: order });
-  };
-};
+    dispatch({ type: ORDER_BY_NAME, payload: order })
+  }
+}
 
 const filterByGenres = (filter) => {
   return function (dispatch) {
-    dispatch({ type: FILTER_BY_GENRES, payload: filter });
+    dispatch({ type: FILTER_BY_GENRES, payload: filter })
   }
 }
 
 const filterByOrigin = (filter) => {
   return function (dispatch) {
-    dispatch({ type: FILTER_BY_ORIGIN, payload: filter });
-  };
-};
-
-const resetFilter = () => {
-    return { type: RESET_FILTER };
+    dispatch({ type: FILTER_BY_ORIGIN, payload: filter })
+  }
 }
 
+const resetFilter = () => {
+  return { type: RESET_FILTER }
+}
 
 export {
   getVideoGames,
@@ -80,5 +79,5 @@ export {
   filterByGenres,
   getGenres,
   filterByOrigin,
-  resetFilter,
+  resetFilter
 }
