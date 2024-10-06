@@ -87,7 +87,7 @@ const CreateGame = () => {
     if (Object.values(errors).length || errorsCkecks.length) {
       return alert(Object.values(errors).concat(errorsCkecks).join('\n'))
     }
-    console.log(form);
+    console.log(form)
     axios
       .post('http://localhost:3001/videogames', form)
       .then((res) => alert('Created'))
@@ -95,54 +95,53 @@ const CreateGame = () => {
   }
   return (
     <main className={style.main}>
-      <h1 className={style.h1}>CREATING VIDEOGAME</h1>
+      <h2 className={style.h2}>CREATING VIDEOGAME</h2>
       <form
         className={style.formContainer}
         action="form"
         onSubmit={handlerSubmit}>
         <div className={style.inputs}>
-          <label htmlFor="name">Name: </label>
           <span className={style.errors}>{errors.name}</span>
           <input
             type="text"
             id="name"
             name="name"
+            placeholder="Name"
             value={form.name}
             onChange={handlerInput}
           />
 
-          <label htmlFor="description">Descriptions:</label>
           <span className={style.errors}>{errors.description}</span>
           <textarea
             type="text"
             id="description"
             name="description"
+            placeholder="Descriptions"
+            className={style.textarea}
             value={form.description}
             onChange={handlerInput}
           />
 
-          <label htmlFor="background_image">Image:</label>
           <span className={style.errors}>{errors.background_image}</span>
           <input
             type="text"
             id="background_image"
             name="background_image"
             value={form.background_image}
-            placeholder="URLs"
+            placeholder="Image/URLs"
             onChange={handlerInput}
           />
 
-          <label htmlFor="releasedDate">Release Date: </label>
           <span className={style.errors}>{errors.releaseDate}</span>
           <input
             type="date"
             id="releaseDate"
             name="releaseDate"
+            placeholder="Release Date"
             value={form.releaseDate}
             onChange={handlerInput}
           />
 
-          <label htmlFor="rating">Rating:</label>
           <span className={style.errors}>{errors.rating}</span>
           <input
             type="number"
@@ -150,6 +149,7 @@ const CreateGame = () => {
             name="rating"
             step="0.01"
             value={form.rating}
+            placeholder="Rating"
             onChange={handlerInput}
           />
         </div>
@@ -197,10 +197,12 @@ const CreateGame = () => {
         </div>
 
         <br />
-        <button className={style.btnCreate}>Create</button>
-        <Link to={'/home'} className={style.btnBack}>
-          Back to Home
-        </Link>
+        <div className={style.btnContainer}>
+          <button className={style.btnCreate}>Create</button>
+          <Link to={'/home'} className={style.btnBack}>
+            Back to Home
+          </Link>
+        </div>
       </form>
     </main>
   )

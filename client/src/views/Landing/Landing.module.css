@@ -58,6 +58,8 @@
 
 .h1 {
   color: #ffffff92;
+  margin: 0 auto;
+  width: 100%;
   left: 0;
   letter-spacing: 5px;
   animation: move linear 2000ms infinite;
