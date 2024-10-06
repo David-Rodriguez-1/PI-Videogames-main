@@ -1,4 +1,3 @@
-import { Children } from 'react'
 import {
   GET_VIDEOGAMES,
   GET_DETAILVIDEOGAME,
@@ -15,7 +14,7 @@ const initialState = {
   allVideoGames: [],
   games: [],
   gameDetails: [],
-  genres: [],
+  genres: JSON.parse(localStorage.getItem('genres')) || [],
   filteredGames: []
 }
 const rootReducer = (state = initialState, action) => {
@@ -29,9 +28,10 @@ const rootReducer = (state = initialState, action) => {
       }
 
     case GET_GENRES:
+      localStorage.setItem('genres', JSON.stringify(action.payload))
       return {
         ...state,
-        genres: action.payload
+        genres: [...action.payload]
       }
 
     case GET_DETAILVIDEOGAME:

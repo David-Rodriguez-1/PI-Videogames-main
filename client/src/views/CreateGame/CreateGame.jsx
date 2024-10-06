@@ -17,7 +17,6 @@ const CreateGame = () => {
     'XBOX',
     'PS Vita'
   ]
-  console.log(genres)
   const [errors, setErrors] = useState({
     name: '',
     description: '',
@@ -87,9 +86,8 @@ const CreateGame = () => {
     if (Object.values(errors).length || errorsCkecks.length) {
       return alert(Object.values(errors).concat(errorsCkecks).join('\n'))
     }
-    console.log(form)
     axios
-      .post('http://localhost:3001/videogames', form)
+      .post('http://localhost:8001/videogames', form)
       .then((res) => alert('Created'))
       .catch((err) => alert(err))
   }
