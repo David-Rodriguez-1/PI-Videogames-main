@@ -71,7 +71,7 @@ const SideBar = () => {
         <br />
         <select className={style.filterGenres} onChange={handlesGenres}>
           <option value="resetFilter">Filter By Genre</option>
-          {genres.map((genre) => (
+          {genres?.map((genre) => (
             <option key={genre.id} value={genre.name}>
               {genre.name}
             </option>
